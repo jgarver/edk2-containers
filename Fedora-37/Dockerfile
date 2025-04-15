@@ -74,6 +74,12 @@ RUN mkdir -p /cross-tools/ && \
       curl -L "${GCC_LOONGARCH64_URL}" | \
       tar --extract -z --strip-components=1 -C /cross-tools
 
+# Set toolchains prefix
+ENV GCC_AARCH64_PREFIX /usr/bin/aarch64-linux-gnu-
+ENV GCC_ARM_PREFIX     /usr/bin/arm-linux-gnu-
+ENV GCC_RISCV64_PREFIX /usr/bin/riscv64-linux-gnu-
+ENV GCC_LOONGARCH64_PREFIX /cross-tools/bin/loongarch64-unknown-linux-gnu-
+# - Also set GCC5, which is deprecated, but still in use.
 ENV GCC5_AARCH64_PREFIX /usr/bin/aarch64-linux-gnu-
 ENV GCC5_ARM_PREFIX     /usr/bin/arm-linux-gnu-
 ENV GCC5_RISCV64_PREFIX /usr/bin/riscv64-linux-gnu-
